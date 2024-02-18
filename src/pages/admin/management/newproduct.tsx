@@ -28,13 +28,14 @@ const NewProduct = () => {
   const navigate = useNavigate();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file: File = e.target.files[0];
+    let file: File | undefined = e.target.files?.[0];
+
     //---------------------------
     return new Promise((resolve, reject) => {
       const storage = getStorage(app);
-      const fileName = new Date().getTime() + file.name;
+      const fileName = new Date().getTime() + file!.name;
       const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, file!);
 
       uploadTask.on(
         "state_changed",
