@@ -10,6 +10,7 @@ import { auth } from "./firebase";
 import { getUser } from "./redux/api/userAPI";
 import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { RootState } from "./redux/store";
+import OrderSuccessfull from "./components/orderSuccessfull"
 
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
@@ -84,6 +85,7 @@ const App = () => {
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
             <Route path="/pay" element={<Checkout />} />
+            <Route path="/order-successfull" element={<OrderSuccessfull />} />
           </Route>
           {/* Admin Routes */}
           <Route
@@ -122,7 +124,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <Toaster position="bottom-center" />
+      <Toaster position="top-center" />
     </Router>
   );
 };

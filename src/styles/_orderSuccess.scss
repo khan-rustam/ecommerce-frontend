@@ -1,0 +1,88 @@
+.orderSuccess {
+  margin: 0 auto;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  > div {
+    display: flex;
+    justify-content: center;
+
+    > img {
+      position: absolute;
+      top: 50%;
+      left: 0;
+    }
+  }
+  > h1 {
+    @include heading(2px);
+    text-align: center;
+  }
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    .shipping-info-card {
+      > h1 {
+        text-align: center;
+        @include heading(2px);
+      }
+      > h5 {
+        margin: 2rem 0 0 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      > p {
+        margin: 0.5rem;
+      }
+      > .shipping-btn {
+        margin: 2rem 0;
+        padding: 1rem;
+        border: none;
+        background-color: rgb(5, 107, 224);
+        color: white;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      .products {
+        padding: 0 10rem 0 0;
+        margin-top: 10px;
+        justify-content: space-between;
+        > span {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          > p {
+            font-weight: 500;
+            > span {
+              font-weight: 400;
+            }
+          }
+        }
+        > img {
+          @include square(7rem);
+          border-radius: 10px;
+        }
+      }
+    }
+    a {
+      @include btn(1rem, $color3, $color1);
+      border-radius: 5px;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

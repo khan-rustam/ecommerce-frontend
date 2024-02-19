@@ -6,11 +6,14 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { FormEvent, useState } from "react";
-import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+// import toast from "react-hot-toast";
+import {
+  // useDispatch,
+  useSelector,
+} from "react-redux";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useNewOrderMutation } from "../redux/api/orderAPI";
-import { resetCart } from "../redux/reducer/cartReducer";
+// import { resetCart } from "../redux/reducer/cartReducer";
 import { RootState } from "../redux/store";
 import { NewOrderRequest } from "../types/api-types";
 import { responseToast } from "../utils/features";
@@ -21,7 +24,7 @@ const CheckOutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.userReducer);
 
@@ -55,16 +58,9 @@ const CheckOutForm = () => {
       total,
       user: user?._id!,
     };
+    const res = await newOrder(orderData);
     try {
-      const res = await newOrder(orderData);
-      if (res.success === false) {
-        setIsProcessing(false);
-        return toast.error( "Something Went Wrong");
-      } else {
-      
-        dispatch(resetCart());
-        responseToast(res, navigate, "/orders");
-      }
+      responseToast(res, navigate, "/order-successfull");
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +79,7 @@ const CheckOutForm = () => {
     //   const res = await newOrder(orderData);
     //   dispatch(resetCart());
     //   responseToast(res, navigate, "/orders");
-    // }
+    // }5
     setIsProcessing(false);
   };
 
