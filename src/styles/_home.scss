@@ -48,8 +48,9 @@
   &:hover > div {
     opacity: 1;
   }
+  
   >p{
-    text-overflow: ellipsis:}
+    text-overflow: ellipsis;}
 
   img {
     @include square(calc(18.75rem - 3rem));
